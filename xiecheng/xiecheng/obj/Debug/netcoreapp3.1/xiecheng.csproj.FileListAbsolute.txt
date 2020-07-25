@@ -68,5 +68,8 @@ D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\n
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\Database\touristRoutePicturesMockData.json
+D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\Database\touristRoutesMockData.json
+D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.csproj.CoreCompileInputs.cache
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.MvcApplicationPartsAssemblyInfo.cache
