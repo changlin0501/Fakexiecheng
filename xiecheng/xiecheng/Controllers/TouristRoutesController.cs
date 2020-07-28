@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using xiecheng.Dtos;
 using xiecheng.Services;
+using AutoMapper;
 
 namespace xiecheng.Controllers
 {
@@ -14,10 +17,16 @@ namespace xiecheng.Controllers
     {
         private ITouristRouteRepository _touristRouteRepository;
 
-        public TouristRoutesController(ITouristRouteRepository touristRouteRepository)
+        //注入私有变量
+        private readonly IMapper _mapper;
+
+        public TouristRoutesController(ITouristRouteRepository touristRouteRepository ,IMapper mapper)
         {
+            //通过接口注入服务依赖
             _touristRouteRepository = touristRouteRepository;
+            _mapper = mapper;
         }
+       
 
         //IActionResult表示访问API动作函数
         [HttpGet]
@@ -40,7 +49,29 @@ namespace xiecheng.Controllers
             {
                 return NotFound($"旅游路线{touristRouteId}找不到");
             }
-            return Ok(touristRouteFromRepo);
+
+            //创建Dto文件
+            //var touristRouteDto = new TouristRouteDto()
+            //{
+            //    Id = touristRouteFromRepo.Id,
+            //    Title = touristRouteFromRepo.Title,
+            //    Description = touristRouteFromRepo.Description,
+            //    Price = touristRouteFromRepo.OriginalPrice * (decimal)(touristRouteFromRepo.DiscountPresent ?? 1),
+            //    CreateTime = touristRouteFromRepo.CreateTime,
+            //    UpdateTime = touristRouteFromRepo.UpdateTime,
+            //    Features = touristRouteFromRepo.Features,
+            //    Fees = touristRouteFromRepo.Fees,
+            //    Notes = touristRouteFromRepo.Notes,
+            //    Rating = touristRouteFromRepo.Rating,
+            //    TravelDays = touristRouteFromRepo.TravelDays.ToString(),
+            //    TripType = touristRouteFromRepo.TripType.ToString(),
+            //    DepartureCity = touristRouteFromRepo.DepartureCity.ToString()
+            //};
+
+            //使用Automapper处理数据
+            var touristRouteDto = _mapper.Map<TouristRouteDto>(touristRouteFromRepo);
+
+            return Ok(touristRouteDto);
         }
     }
 }

@@ -63,8 +63,6 @@ D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\n
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.AssemblyInfoInputs.cache
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.AssemblyInfo.cs
-D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.csproj.CoreCompileInputs.cache
-D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.MvcApplicationPartsAssemblyInfo.cache
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.RazorTargetAssemblyInfo.cache
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.csproj.CopyComplete
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\staticwebassets\xiecheng.StaticWebAssets.Manifest.cache
@@ -72,3 +70,4 @@ D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\n
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.dll
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.pdb
 D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.genruntimeconfig.cache
+D:\report\测试\C#\asp.net core mvc5\Fakexiecheng\xiecheng\xiecheng\obj\Debug\netcoreapp3.1\xiecheng.csprojAssemblyReference.cache

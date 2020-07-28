@@ -12,6 +12,7 @@ using xiecheng.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;  //添加对配置服务的引用
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace xiecheng
 {
@@ -40,6 +41,8 @@ namespace xiecheng
                 option.UseSqlServer(Configuration["DbContext:ConnectionString"]);
             });
 
+            //扫描Profile文件
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         private void setupAction(MvcOptions obj)

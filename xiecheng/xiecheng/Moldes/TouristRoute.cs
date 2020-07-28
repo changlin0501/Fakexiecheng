@@ -25,9 +25,9 @@ namespace xiecheng.Moldes
 
         //折扣 【?】表示为可空数据
         [Range(0.0,1.0)]
-        public decimal? DiscoutPresent { get; set; }
+        public decimal? DiscountPresent { get; set; }
 
-        public DateTime CreatTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
         public DateTime? UpdateTime { get; set; }
 
@@ -45,5 +45,10 @@ namespace xiecheng.Moldes
         //建立外键关系 一个旅游路线有很多照片 所以是一对多得关系 这里写成数组得形式
         public ICollection<TouristRoutePicture> TouristRoutePictures { get; set; }
             = new List<TouristRoutePicture>();
+
+        public double? Rating { get; set; }
+        public TravelDays? TravelDays { get; set; }
+        public TripType? TripType { get; set; }
+        public DepartureCity? DepartureCity { get; set; }
     }
 }
