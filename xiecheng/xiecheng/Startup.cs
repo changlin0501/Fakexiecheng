@@ -11,6 +11,8 @@ using xiecheng.Database;
 using xiecheng.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;  //添加对配置服务的引用
+using Microsoft.AspNetCore.Mvc;
+
 namespace xiecheng
 {
     public class Startup
@@ -27,7 +29,10 @@ namespace xiecheng
         public void ConfigureServices(IServiceCollection services)
         {
             //服务依赖注入
-            services.AddControllers();
+            services.AddControllers(setupAction => {
+                setupAction.ReturnHttpNotAcceptable = true;
+            
+            }).AddXmlDataContractSerializerFormatters();
             services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();
             services.AddDbContext<AppDbcontext>(option=> 
             {
@@ -35,6 +40,11 @@ namespace xiecheng
                 option.UseSqlServer(Configuration["DbContext:ConnectionString"]);
             });
 
+        }
+
+        private void setupAction(MvcOptions obj)
+        {
+            throw new NotImplementedException();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
