@@ -10,8 +10,8 @@ using xiecheng.Database;
 namespace xiecheng.Migrations
 {
     [DbContext(typeof(AppDbcontext))]
-    [Migration("20200725085100_initialMigration3")]
-    partial class initialMigration3
+    [Migration("20200728054036_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

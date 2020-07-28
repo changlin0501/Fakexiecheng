@@ -3,14 +3,50 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace xiecheng.Migrations
 {
-    public partial class initialMigration3 : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("a623a7c3-af7a-481d-a9b5-79d08325ca81"));
+            migrationBuilder.CreateTable(
+                name: "TouristRoutes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
+                    Description = table.Column<string>(maxLength: 1500, nullable: false),
+                    OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DiscoutPresent = table.Column<decimal>(nullable: true),
+                    CreatTime = table.Column<DateTime>(nullable: false),
+                    UpdateTime = table.Column<DateTime>(nullable: true),
+                    DepartureTime = table.Column<DateTime>(nullable: true),
+                    Features = table.Column<string>(nullable: true),
+                    Fees = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TouristRoutes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "touristRoutePictures",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Url = table.Column<string>(maxLength: 100, nullable: true),
+                    TouristRouteid = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_touristRoutePictures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_touristRoutePictures_TouristRoutes_TouristRouteid",
+                        column: x => x.TouristRouteid,
+                        principalTable: "TouristRoutes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.InsertData(
                 table: "TouristRoutes",
@@ -109,434 +145,20 @@ namespace xiecheng.Migrations
                     { 25, new Guid("39996f34-013c-4fc6-b1b3-0c1036c47169"), "../../assets/images/ocean-829715_640.jpg" },
                     { 68, new Guid("39996f34-013c-4fc6-b1b3-0c1036c47119"), "../../assets/images/louvre-102840_640.jpg" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_touristRoutePictures_TouristRouteid",
+                table: "touristRoutePictures",
+                column: "TouristRouteid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 6);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 7);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 8);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 9);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 10);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 11);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 12);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 13);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 14);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 15);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 16);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 17);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 18);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 19);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 20);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 21);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 22);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 23);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 24);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 25);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 26);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 27);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 28);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 29);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 30);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 31);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 32);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 33);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 34);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 35);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 36);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 37);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 38);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 39);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 40);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 41);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 42);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 43);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 44);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 45);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 46);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 47);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 48);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 49);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 50);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 51);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 52);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 53);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 54);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 55);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 56);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 57);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 58);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 59);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 60);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 61);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 62);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 63);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 64);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 65);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 66);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 67);
-
-            migrationBuilder.DeleteData(
-                table: "touristRoutePictures",
-                keyColumn: "Id",
-                keyValue: 68);
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("2430bf64-fd56-460c-8b75-da0a1d1cd74c"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47110"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47111"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47112"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47113"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47114"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47115"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47116"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47117"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47118"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47119"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("39996f34-013c-4fc6-b1b3-0c1036c47169"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("3ecbcd92-a9e0-45f7-9b29-e03272cb0862"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("88cf89b9-e4b5-4b42-a5bf-622bd3039601"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("a1fd0bee-0afc-4586-96c8-f46b7c99d2a0"));
-
-            migrationBuilder.DeleteData(
-                table: "TouristRoutes",
-                keyColumn: "Id",
-                keyValue: new Guid("fb6d4f10-79ed-4aff-a915-4ce29dc9c7e1"));
-
-            migrationBuilder.InsertData(
-                table: "TouristRoutes",
-                columns: new[] { "Id", "CreatTime", "DepartureTime", "Description", "DiscoutPresent", "Features", "Fees", "Notes", "OriginalPrice", "Title", "UpdateTime" },
-                values: new object[] { new Guid("a623a7c3-af7a-481d-a9b5-79d08325ca81"), new DateTime(2020, 7, 25, 8, 38, 6, 958, DateTimeKind.Utc).AddTicks(7483), null, "shuoming", null, null, null, null, 0m, "Ceshititle", null });
+            migrationBuilder.DropTable(
+                name: "touristRoutePictures");
+
+            migrationBuilder.DropTable(
+                name: "TouristRoutes");
         }
     }
 }
