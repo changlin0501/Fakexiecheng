@@ -19,12 +19,28 @@ namespace xiecheng.Controllers
             _touristRouteRepository = touristRouteRepository;
         }
 
+        //IActionResult表示访问API动作函数
+        [HttpGet]
         public IActionResult GerTouristRoutes()
         {
-            var routes = _touristRouteRepository.GetTouristRoutes();
-            return Ok(routes);
+            var touristRoutesFronRepo = _touristRouteRepository.GetTouristRoutes();
+            if (touristRoutesFronRepo == null || touristRoutesFronRepo.Count() <= 0)
+            {
+                return NotFound("没有旅游路线");
+            }
+            return Ok(touristRoutesFronRepo);
         }
 
-
+        //查询指定ID
+        [HttpGet("{touristRouteId}")]
+        public IActionResult GetTouristRouteById(Guid touristRouteId)
+        {
+            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoute(touristRouteId);
+            if (touristRouteFromRepo == null)
+            {
+                return NotFound($"旅游路线{touristRouteId}找不到");
+            }
+            return Ok(touristRouteFromRepo);
+        }
     }
 }
