@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,12 +19,13 @@ namespace xiecheng.Services
 
         public TouristRoute GetTouristRoute(Guid touristRouteId)
         {
-            return _context.TouristRoutes.FirstOrDefault(n => n.Id == touristRouteId);
+            return _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefault(n => n.Id == touristRouteId);
         }
 
         public IEnumerable<TouristRoute> GetTouristRoutes()
         {
-            return _context.TouristRoutes;
+            //include vs join (可使用数据立即加载)
+            return _context.TouristRoutes.Include(t=>t.TouristRoutePictures);
         }
 
         //接口函数调用数据库
