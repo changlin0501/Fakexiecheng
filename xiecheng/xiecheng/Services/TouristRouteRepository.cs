@@ -25,6 +25,18 @@ namespace xiecheng.Services
         {
             return _context.TouristRoutes;
         }
+
+        //接口函数调用数据库
+        public bool TouristRouteExists(Guid touristRouteId)
+        {
+            //调用数据库，使用Any表示数据库是否存在。
+            return _context.TouristRoutes.Any(t => t.Id == touristRouteId);
+        }
+
+        public IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId)
+        {
+            return _context.touristRoutePictures.Where(p => p.TouristRouteid == touristRouteId).ToList();
+        }
     }
 }
  
