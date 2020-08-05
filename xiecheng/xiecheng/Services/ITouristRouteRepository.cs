@@ -20,5 +20,8 @@ namespace xiecheng.Services
         //添加根据路线ID获取图片
         IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid TouristRouteId);
 
+        //获取子资源ID
+        TouristRoutePicture GetPicture(int pictureId);
+
     }
 }
