@@ -37,6 +37,12 @@ namespace xiecheng.Services
         {
             return _context.touristRoutePictures.Where(p => p.TouristRouteid == touristRouteId).ToList();
         }
+
+        //调用子资源ID
+        public TouristRoutePicture GetPicture(int pirtureId)
+        {
+            return _context.touristRoutePictures.Where(p => p.Id == pirtureId).FirstOrDefault();
+        }
     }
 }
  

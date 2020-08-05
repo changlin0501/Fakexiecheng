@@ -48,5 +48,26 @@ namespace xiecheng.Controllers
 
             return Ok(_mapper.Map<IEnumerable<TouristRoutePictureDto>>(picturesFromRepo));
         }
+
+        //获取图片下的ID
+        [HttpGet("{pictureId}")]
+        public IActionResult GetPicture(Guid touristRouteId, int pictureId)
+        {
+            //先查询旅游路线ID
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("旅游路线不存在");
+            }
+
+            //先获取图片
+            var pictureFromRepo = _touristRouteRepository.GetPicture(pictureId);
+            if (pictureFromRepo == null)
+            {
+                return NotFound("图片不存在");
+            }
+
+            return Ok(_mapper.Map<TouristRoutePictureDto>(pictureFromRepo));
+        }
+
     }
 }
