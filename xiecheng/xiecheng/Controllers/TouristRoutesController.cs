@@ -27,12 +27,12 @@ namespace xiecheng.Controllers
             _mapper = mapper;
         }
        
-
+        //传入格式 api/Controller?Keyword="传入的参数"
         //IActionResult表示访问API动作函数
         [HttpGet]
-        public IActionResult GerTouristRoutes()
+        public IActionResult GerTouristRoutes([FromQuery]string keyword)
         {
-            var touristRoutesFronRepo = _touristRouteRepository.GetTouristRoutes();
+            var touristRoutesFronRepo = _touristRouteRepository.GetTouristRoutes(keyword);
             if (touristRoutesFronRepo == null || touristRoutesFronRepo.Count() <= 0)
             {
                 return NotFound("没有旅游路线");
