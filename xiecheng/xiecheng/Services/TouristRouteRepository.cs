@@ -22,10 +22,24 @@ namespace xiecheng.Services
             return _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefault(n => n.Id == touristRouteId);
         }
 
-        public IEnumerable<TouristRoute> GetTouristRoutes()
+        public IEnumerable<TouristRoute> GetTouristRoutes(string keyword)
         {
+            //IQueryable 其实就是Linq to Sql 语句
+            IQueryable<TouristRoute> result = _context
+                .TouristRoutes
+                .Include(t => t.TouristRoutePictures);
+                //如果Keyword为空时或者空字符串时
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                //消除keyword中多余的空格
+                keyword = keyword.Trim();
+                //使用where函数使用sql语句
+               result= result.Where(t => t.Title.Contains(keyword));
+            }
             //include vs join (可使用数据立即加载)
-            return _context.TouristRoutes.Include(t=>t.TouristRoutePictures);
+
+            //结果返回tolist()列表指快速去数据库中查找数据
+            return result.ToList();
         }
 
         //接口函数调用数据库
